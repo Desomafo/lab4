@@ -27,6 +27,7 @@ Node* right;//Указатель на правое поддерево
 
 struct Data {//-----------------Исходные данные
 char number[l_number];//Номер автомобиля
+char FIO[l_type];
 char time[l_time];//Время нарушения
 char type[l_type];//Вид нарушения
 float price;//Размер штрафа
@@ -111,6 +112,7 @@ Node* first( Data data ) {// -------------Формирование корневого элемента дерева
    Fine* beg = new Fine;
    strncpy( beg->time,data.time, l_time );
    strncpy( beg->type,data.type, l_type );
+   strncpy( beg->FIO,data.FIO, l_type );
    beg->price= data.price;
    beg->next= 0;// Создание первого узла дерева:
    Node* root = new Node;
@@ -262,6 +264,7 @@ Node* search_insert( Node* root, const Data& data, Action action,
    Fine* pf = new Fine;
    strncpy( pf->time,data.time, l_time );
    strncpy( pf->type,data.type, l_type );
+   strncpy( pf->FIO, data.FIO, l_type );
    pf->price= data.price;
    pf->next= 0;
    if ( !found ) { // Создание нового узла:
